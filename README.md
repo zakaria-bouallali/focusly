@@ -47,8 +47,8 @@
 ## ✨ Key Features
 
 ### 🏢 Multi-Tenant Workspaces & Role-Based Access Control (RBAC)
-- **Granular Workspace Roles**: Invite teammates via email and assign workspace-scoped roles (`owner`, `admin`, or `member`).
-- **Server-Side Security Enforcement**: All mutations are protected server-side via Laravel **Policies** and specialized middleware (`EnsureWorkspaceMember`), ensuring users cannot access or modify resources across workspace boundaries.
+- **Granular Access Control**: Assign workspace-scoped roles (`owner` and `member`) alongside global system administration (`superAdmin`).
+- **Server-Side Security Enforcement**: All mutations are protected server-side via Laravel **Policies** (`WorkspacePolicy`, `ProjectPolicy`, `TaskPolicy`) and specialized middleware (`EnsureWorkspaceMember`, `EnsureSuperAdmin`), ensuring strict access control across workspace and system boundaries.
 
 ### ⚡ Real-Time Kanban Boards via WebSockets
 - **Fluid Drag-and-Drop**: Built with `@dnd-kit` for responsive, accessible card positioning across columns (`To Do`, `In Progress`, `Done`).
@@ -103,7 +103,7 @@ workspaces
   ├── id, name, owner_id (FK -> users)
 
 workspace_members
-  ├── id, workspace_id (FK -> workspaces), user_id (FK -> users), role (owner|admin|member)
+  ├── id, workspace_id (FK -> workspaces), user_id (FK -> users), role (owner|member)
   └── unique(workspace_id, user_id)
 
 projects
@@ -134,13 +134,15 @@ notifications
 
 ## 🔐 Role-Based Access Control (RBAC) Specification
 
-| Action | `owner` | `admin` | `member` |
+Focusly separates permissions between global system management (`superAdmin`), workspace creators (`owner`), and invited teammates (`member`):
+
+| Action | `superAdmin` | `owner` | `member` |
 | :--- | :---: | :---: | :---: |
-| Create / Edit / Delete Workspaces | ✅ | ❌ | ❌ |
-| Invite Members & Manage Roles | ✅ | ✅ | ❌ |
+| Global User & System Management | ✅ | ❌ | ❌ |
+| Create / Edit / Delete Workspaces | ✅ | ✅ | ❌ |
+| Invite Teammates (`member`) | ✅ | ✅ | ❌ |
 | Remove Teammates from Workspace | ✅ | ✅ | ❌ |
-| Create / Edit Projects | ✅ | ✅ | ❌ |
-| Delete Projects | ✅ | ✅ | ❌ |
+| Create / Edit / Delete Projects | ✅ | ✅ | ❌ |
 | Create / Assign / Move Tasks | ✅ | ✅ | ✅ |
 | Post Comments & Upload Attachments | ✅ | ✅ | ✅ |
 | Use AI Notes Parser & Summarizer | ✅ | ✅ | ✅ |
