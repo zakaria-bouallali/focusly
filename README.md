@@ -11,39 +11,6 @@
 
 ---
 
-## 🎨 UI & Design Preview
-
-<div align="center">
-  <img src="focusly-web/public/images/hero.png" alt="Focusly Hero Dashboard" width="90%" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" />
-</div>
-
-<br />
-
-<table width="100%">
-  <tr>
-    <td width="50%" align="center">
-      <b>Real-Time Kanban Board (`@dnd-kit` + Reverb)</b><br />
-      <img src="focusly-web/public/images/kanban_design.png" alt="Kanban Board Design" width="100%" style="border-radius: 8px;" />
-    </td>
-    <td width="50%" align="center">
-      <b>AI Notes-to-Tasks Parser (`claude-3-5-sonnet`)</b><br />
-      <img src="focusly-web/public/images/parser_design.png" alt="AI Notes Parser" width="100%" style="border-radius: 8px;" />
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <b>Workspace & Team Management</b><br />
-      <img src="focusly-web/public/images/workspaces_design.png" alt="Workspaces Management" width="100%" style="border-radius: 8px;" />
-    </td>
-    <td width="50%" align="center">
-      <b>Project Portfolios & Progress Tracking</b><br />
-      <img src="focusly-web/public/images/projects_design.png" alt="Projects Overview" width="100%" style="border-radius: 8px;" />
-    </td>
-  </tr>
-</table>
-
----
-
 ## ✨ Key Features
 
 ### 🏢 Multi-Tenant Workspaces & Role-Based Access Control (RBAC)
